@@ -38,6 +38,13 @@ window.onload = () => {
     var input = document.createElement("input");
     input.type = "text";
     input.name = "time";
+
+    var label = document.createElement("p");
+    label.textContent = "Estimated Time: ";
+
+    label.appendChild(input);
+    
+    return label;
   }
 
   function createTaskInput(numTasks) {
