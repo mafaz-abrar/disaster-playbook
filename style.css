@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+}
+
+#form {
+  border-width: 1%;
+  border-color: black;
+  border-style: solid;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+input {
+  margin-right: 1vw;
+  width: 30vw;
+  cursor: text;
+}
+
+p {
+  /* border-width: 1%;
+  border-color: red;
+  border-style: solid; */
+  display: flex;
+  justify-content: space-between;
+
+  width: 60%;
+}
