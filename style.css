@@ -31,3 +31,11 @@ p {
 
   width: 60%;
 }
+
+li {
+  list-style: none;
+}
+
+ul {
+  /* background-color: red; */
+}

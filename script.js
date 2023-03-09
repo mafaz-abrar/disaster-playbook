@@ -1,11 +1,11 @@
 window.onload = () => {
-  var numTasks = 0;
-  var addTaskButton = document.getElementById("add-task-btn")
+  let numTasks = 0;
+  let addTaskButton = document.getElementById("add-task-btn")
 
   function renumberTasks() {
-    var taskList =  document.getElementById("task-list");
+    let taskList =  document.getElementById("task-list");
 
-    var children = taskList.childNodes;
+    let children = taskList.childNodes;
 
     for (let i = 1; i < children.length; i++) {
       let item = children.item(i)
@@ -18,12 +18,12 @@ window.onload = () => {
 
 
   function createDeleteButton(taskIndex) {
-    var deleteTaskButton = document.createElement("button");
+    let deleteTaskButton = document.createElement("button");
     deleteTaskButton.textContent  = "Delete";
     deleteTaskButton.id = "delete-btn-" + taskIndex;
 
     deleteTaskButton.addEventListener("click", () => {
-      var element = document.getElementById("task-" + taskIndex)
+      let element = document.getElementById("task-" + taskIndex)
       element.remove();
 
       renumberTasks();
@@ -35,11 +35,11 @@ window.onload = () => {
   }
 
   function createTimeEstimateInput() {
-    var input = document.createElement("input");
+    let input = document.createElement("input");
     input.type = "text";
     input.name = "time";
 
-    var label = document.createElement("p");
+    let label = document.createElement("p");
     label.textContent = "Estimated Time: ";
 
     label.appendChild(input);
@@ -47,23 +47,24 @@ window.onload = () => {
     return label;
   }
 
+  // Create a Task Input field with lab
   function createTaskInput(numTasks) {
-    var taskList = document.getElementById("task-list");
+    let taskList = document.getElementById("task-list");
 
-    var label = document.createElement("p");
+    let label = document.createElement("p");
     label.id = "task-" + (numTasks)
 
     label.textContent  = "Task " + (numTasks + 1)  + ": ";
 
-    var input = document.createElement("input");
+    let input = document.createElement("input");
     input.type = "text";
     input.name = "task";
 
-    var innerDiv = document.createElement("div");
+    let innerDiv = document.createElement("div");
 
     innerDiv.appendChild(input);
 
-    var deleteButton = createDeleteButton(numTasks);
+    let deleteButton = createDeleteButton(numTasks);
     innerDiv.appendChild(deleteButton);
 
     label.appendChild(innerDiv);
@@ -71,14 +72,39 @@ window.onload = () => {
     taskList.appendChild(label);
   }
 
+  // Create a Task Node
+  function createTask(taskNumber) {
+    let task = document.createElement("li");
+    task.id = "task-" + (taskNumber);
+
+    let taskName = createTaskName();
+    task.appendChild(taskName);
+
+    let taskTimeEstimate = createTaskTimeEstimate();
+    task.appendChild(taskTimeEstimate);
+
+    let taskDeleteButton = createTaskDeleteButton();
+    task.appendChild(taskDeleteButton);
+
+    return task;
+  }
+
+  // Add a Task
   function addTask() {
+    let task
+
+
     createTaskInput(numTasks);
     numTasks++;
   };
 
-  // Registering event listeners
+  // Main function
+  function main() {
+    // Registering event listeners
+    addTaskButton.addEventListener("click", addTask);
+  }
   
-  addTaskButton.addEventListener("click", addTask);
+  main();
 }
 
 
