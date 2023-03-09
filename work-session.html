@@ -1,7 +1,7 @@
 <!--
-// Name: Disaster Playbook.html
+// Name: work-session.html
 // Auth: Mafaz Abrar Jan Chowdhury
-// Date: 07 Mar 2023
+// Date: 09 Mar 2023
 // Desc: 
 -->
 
@@ -16,24 +16,27 @@
  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
  <link rel="stylesheet" href="style.css" />
+ <script src="./work-session-script.js"></script>
  <title>Disaster Playbook</title>
- <script src="./script.js"></script>
 </head>
 
 <body>
-  <h1 class="pointer">Disaster Playbook</h1>
+  <h1>Disaster Playbook</h1>
 
-  <form id="form" action="" method="GET">
-    <ul id="task-list">
-      
-    </ul>
-    
-    <button type="button" id="add-task-btn">+ Add Task</button>
+  <main id="main">
+    <table id="task-table" border="1">
+      <tr>
+        <th>No.</th>
+        <th>Task Name</th>
+        <th>Deadline</th>
+      </tr>
+
+    </table>
   
-  </form>
+    <button type="button" id="new-list-button">New List</button>
 
+  </main>
+ 
   
 </body>
 </html>
-
-

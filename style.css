@@ -6,36 +6,47 @@ h1 {
   text-align: center;
 }
 
-#form {
-  border-width: 1%;
+#main {
+  /* border-width: 1%;
   border-color: black;
-  border-style: solid;
-  width: 75%;
+  border-style: solid; */
+  width: 50%;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+  justify-content: center;
 }
 
+table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+th, td {
+  padding: 1vw;
+} 
+
 input {
-  margin-right: 1vw;
+  /* margin-right: 1vw;
   width: 30vw;
-  cursor: text;
+  cursor: text; */
 }
 
 p {
   /* border-width: 1%;
   border-color: red;
   border-style: solid; */
-  display: flex;
+  /* display: flex;
   justify-content: space-between;
 
-  width: 60%;
+  width: 60%; */
 }
 
-li {
-  list-style: none;
-}
 
-ul {
+ul, li {
   /* background-color: red; */
+  list-style-type: none;
+  list-style-position:inside;
+  margin:0;
+  padding:0;
 }
