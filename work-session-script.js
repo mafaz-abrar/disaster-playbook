@@ -5,15 +5,13 @@ window.onload = () => {
     let currentTime = new Date();
 
     for (let i = 0; i < tasks.length; i++) {
-      let newTime = new Date()
-      
-      newTime.setMinutes(currentTime.getMinutes() + Number(tasks[i].time));
+      currentTime.setMinutes(currentTime.getMinutes() + Number(tasks[i].time));
 
-      tasks[i].time = newTime;
+      tasks[i].time = currentTime;
 
-      let hours = ('0' + newTime.getHours()).slice(-2);
-      let minutes = ('0' + newTime.getMinutes()).slice(-2);
-      let seconds = ('0' + newTime.getSeconds()).slice(-2);
+      let hours = ('0' + currentTime.getHours()).slice(-2);
+      let minutes = ('0' + currentTime.getMinutes()).slice(-2);
+      let seconds = ('0' + currentTime.getSeconds()).slice(-2);
 
       tasks[i].deadline = hours + ":" + minutes + ":" + seconds;
     }
