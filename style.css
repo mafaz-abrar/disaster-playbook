@@ -17,6 +17,10 @@ h1 {
   justify-content: center;
 }
 
+#new-list-button {
+  margin-top: 1vw;
+}
+
 table {
   margin-left: auto;
   margin-right: auto;

@@ -2,19 +2,21 @@ window.onload = () => {
 
   function calculateTimeDeadlines(tasks) {
 
-    var currentTime = new Date();
+    let currentTime = new Date();
 
     for (let i = 0; i < tasks.length; i++) {
-      let newTime = currentTime
+      let newTime = new Date()
       
-      newTime.setMinutes(newTime.getMinutes() + Number(tasks[i].time));
+      newTime.setMinutes(currentTime.getMinutes() + Number(tasks[i].time));
+
+      tasks[i].time = newTime;
 
       let hours = ('0' + newTime.getHours()).slice(-2);
-      let minutes = ('0' + newTime.getMinutes()).slice(-2)
+      let minutes = ('0' + newTime.getMinutes()).slice(-2);
+      let seconds = ('0' + newTime.getSeconds()).slice(-2);
 
-      tasks[i].time = hours + ":" + minutes;
+      tasks[i].deadline = hours + ":" + minutes + ":" + seconds;
     }
-
   }
 
   function printTasks(tasks) {
@@ -24,6 +26,7 @@ window.onload = () => {
 
     for (let i = 0; i < tasks.length; i++) {
       let newTableRow = document.createElement("tr");
+      newTableRow.id = "row-" + i;
       // task.style.backgroundColor = "green";
 
       let taskNumber = document.createElement("td");
@@ -35,13 +38,40 @@ window.onload = () => {
 
       let taskTime  = document.createElement("td");
       // taskTime.style.backgroundColor = "blue";
-      taskTime.textContent = tasks[i].time;
+      taskTime.textContent = tasks[i].deadline;
 
       newTableRow.appendChild(taskNumber);
       newTableRow.appendChild(taskName);
       newTableRow.appendChild(taskTime);
 
       taskTable.appendChild(newTableRow);
+    }
+  }
+
+  function highlightCurrentTask(tasks) {
+    let currentTime = new Date();
+
+    for (let i = 0; i < tasks.length; i++) {
+
+      let row = document.getElementById("row-" + i);
+
+      if (typeof(tasks[i - 1]) === 'undefined') {
+        if (currentTime < tasks[i].time) {
+          row.style.backgroundColor = "yellow";
+        }
+        else {
+          console.log("NOT");
+          row.style.backgroundColor = "white";
+        }
+      }
+      else {
+        if (currentTime < tasks[i].time && currentTime >= tasks[i - 1].time) {
+          row.style.backgroundColor = "yellow";
+        }
+        else {
+          row.style.backgroundColor = "white";
+        }
+      }
     }
   }
 
@@ -52,8 +82,6 @@ window.onload = () => {
   function main() {
     let newListButton = document.getElementById("new-list-button");
     newListButton.addEventListener("click", onNewListButtonClicked);
-    newListButton.style.marginTop = "1vw";
-
 
 
     if (typeof(sessionStorage.tasks) !== "undefined") {
@@ -61,8 +89,11 @@ window.onload = () => {
 
       calculateTimeDeadlines(tasks);
       printTasks(tasks);
-    }
 
+      setInterval(() => {
+        highlightCurrentTask(tasks);
+      }, 1000);
+    }
   }
 
   main();
