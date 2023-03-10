@@ -30,23 +30,6 @@ th, td {
   padding: 1vw;
 } 
 
-input {
-  /* margin-right: 1vw;
-  width: 30vw;
-  cursor: text; */
-}
-
-p {
-  /* border-width: 1%;
-  border-color: red;
-  border-style: solid; */
-  /* display: flex;
-  justify-content: space-between;
-
-  width: 60%; */
-}
-
-
 ul, li {
   /* background-color: red; */
   list-style-type: none;

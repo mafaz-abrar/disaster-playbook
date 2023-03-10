@@ -8,7 +8,6 @@ window.onload = () => {
     }
   }
 
-
   function renumberTasks() {
     let taskList =  document.getElementById("task-list");
 
@@ -23,7 +22,6 @@ window.onload = () => {
       taskNameInputSpan.textContent = "Task " + i + ":";
     }
   }
-
 
   function createTaskDeleteButton(taskIndex) {
     let root = document.createElement("div");
@@ -159,9 +157,11 @@ window.onload = () => {
       let taskTimeEstimateInput = taskTimeEstimateRootDiv.childNodes[1];
       let taskTimeEstimateValue = taskTimeEstimateInput.value;
 
+      // Store the task name
+      // and the task time estimate
       task = {
         name: taskNameValue,
-        time: taskTimeEstimateValue,
+        timeEstimate: taskTimeEstimateValue,
       };
 
       tasks.push(task);
