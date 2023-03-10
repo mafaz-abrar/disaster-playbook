@@ -1,8 +1,12 @@
 window.onload = () => {
-  
-  
-  
   let totalNumberOfTasks = 0;
+
+  function retrieveTasks(tasks) {
+    for (let i = 0; i < tasks.length; i++) {
+      
+
+    }
+  }
 
 
   function renumberTasks() {

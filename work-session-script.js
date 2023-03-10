@@ -6,14 +6,19 @@ window.onload = () => {
 
     for (let i = 0; i < tasks.length; i++) {
       currentTime.setMinutes(currentTime.getMinutes() + Number(tasks[i].time));
+      
+      // Passing by Ref - everytime currentTime changes, all tasks[i].time
+      // values updated...
+      // tasks[i].time = currentTime;
 
-      tasks[i].time = currentTime;
-
+      tasks[i].time = structuredClone(currentTime);
+      
       let hours = ('0' + currentTime.getHours()).slice(-2);
       let minutes = ('0' + currentTime.getMinutes()).slice(-2);
       let seconds = ('0' + currentTime.getSeconds()).slice(-2);
 
       tasks[i].deadline = hours + ":" + minutes + ":" + seconds;
+
     }
   }
 
@@ -74,6 +79,7 @@ window.onload = () => {
   }
 
   function onNewListButtonClicked() {
+    sessionStorage.clear();
     location = "./home.html";
   }
 
